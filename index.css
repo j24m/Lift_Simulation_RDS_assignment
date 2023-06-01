@@ -1,0 +1,17 @@
+* {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup-modal {
+  background-color: var(--secondary-color);
+  box-shadow: 2px 2px 5px rgb(19, 32, 32);
+}
