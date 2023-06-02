@@ -57,3 +57,24 @@ body {
     opacity: 1;
   }
 }
+
+.back-btn {
+  z-index: 5;
+  position: fixed;
+  top: 1rem;
+  left: 3rem;
+}
+
+.back-btn button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  box-shadow: 2px 2px 5px rgb(19, 32, 32);
+}
+
+.back-btn button:hover {
+  background-color: rgb(238, 226, 226);
+}
+
+.back-btn button:active {
+  background-color: rgb(212, 207, 207);
+}
