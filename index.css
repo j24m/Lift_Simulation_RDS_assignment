@@ -3,13 +3,16 @@
   box-sizing: border-box;
 }
 
-.main-container {
+body {
   background-color: var(--primary-color);
+}
+
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  flex-wrap: wrap;
 }
 
 .userInputContainer {
@@ -120,8 +123,8 @@
 }
 
 .floors-container {
-  margin: 10rem;
-  width: 90vw;
+  margin: 5rem;
+  min-width: 120rem;
   border: 2px solid black;
 }
 
@@ -130,6 +133,7 @@
   border-bottom: 2px solid #0e0e0e;
   height: 15rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
