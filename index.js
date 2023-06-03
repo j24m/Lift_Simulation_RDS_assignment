@@ -32,7 +32,7 @@ function displayLiftsAndFloors() {
   const floorsValue = numberOfFloors.value;
   const liftsValue = numberOfLifts.value;
   if (floorsValue <= 0 || liftsValue <= 0) {
-    toastMessage.innerHTML = "Please add valid a number";
+    toastMessage.innerHTML = "Please add a valid number";
     showToastDiv.style.display = "block";
   } else {
     liftFloorValueModal.style.display = "none";
