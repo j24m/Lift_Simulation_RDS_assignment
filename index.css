@@ -3,17 +3,52 @@
   box-sizing: border-box;
 }
 
-body {
+.main-container {
   background-color: var(--primary-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.lift-floor-value-modal {
+.userInputContainer {
   background-color: var(--secondary-color);
   box-shadow: 2px 2px 5px rgb(19, 32, 32);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  width: 50rem;
+  height: 40rem;
+  color: var(--primary-color);
+  border-radius: 0.2rem;
+  gap: 2rem;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.userInputContainer h1 {
+  font-size: 2.5rem;
+}
+
+.userInputContainer input {
+  padding: 1rem;
+  width: 30rem;
+  font-size: 1.5rem;
+}
+
+.userInputContainer label {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.userInputContainer button {
+  width: 30rem;
 }
 
 /* Toast */
@@ -27,7 +62,7 @@ body {
 }
 
 .showToastDiv .toast {
-  position: fixed;
+  position: absolute;
   bottom: 5rem;
   left: 2rem;
   animation: fadein 0.5s;
@@ -62,13 +97,18 @@ body {
   z-index: 5;
   position: fixed;
   top: 1rem;
-  left: 3rem;
+  left: 1rem;
 }
 
 .back-btn button {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   box-shadow: 2px 2px 5px rgb(19, 32, 32);
+  height: 4.5rem;
+  width: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-btn button:hover {
@@ -77,4 +117,26 @@ body {
 
 .back-btn button:active {
   background-color: rgb(212, 207, 207);
+}
+
+.floors-container {
+  margin: 10rem;
+  width: 90vw;
+  border: 2px solid black;
+}
+
+.single-floor {
+  border-top: 2px solid #0e0e0e;
+  border-bottom: 2px solid #0e0e0e;
+  height: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.single-floor h1 {
+  font-size: 2rem;
+  margin: rem;
 }

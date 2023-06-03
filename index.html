@@ -10,37 +10,31 @@
   </head>
   <body>
     <div class="main-container">
-      <div class="signup-modal lift-floor-value-modal">
+      <div class="userInputContainer">
         <h1>Lift Simulation</h1>
-        <div class="input-container">
-          <div class="input input-floor-number">
-            <label for="no_of_floors">
-              Number of Floors
-              <input
-                class="no-of-floors"
-                type="number"
-                name="no_of_floors"
-                placeholder="Please Enter Number of Floors"
-                required
-              />
-            </label>
-          </div>
-          <div class="input input-lift-number">
-            <label for="no_of_lifts">
-              Number of Lifts
-              <input
-                class="no-of-lifts"
-                type="number"
-                name="no_of_lifts"
-                placeholder="Please Enter Number of Lifts"
-                required
-              />
-            </label>
-          </div>
+        <div class="label-input-container">
+          <label for="number"> Number of Floors </label>
+          <input
+            type="number"
+            name="number"
+            value="1"
+            class="no-of-floors"
+            placeholder="Please Enter number of Floors"
+          />
         </div>
-        <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+        <div class="label-input-container">
+          <label for="number"> Number of Lifts </label>
+          <input
+            type="number"
+            name="number"
+            value="1"
+            class="no-of-lifts"
+            placeholder="Please Enter number of Floors"
+          />
+        </div>
+        <button class="btn btn-primary btn-submit">Submit</button>
       </div>
-      <!-- Show toast if input field empty -->
+      <!-- Show toast if input value invalid -->
       <div class="showToastDiv">
         <div class="toast simple-toast">
           <div class="toast-message"></div>
@@ -63,7 +57,10 @@
           </svg>
         </button>
       </a>
-      <div class="lift-simulation-container"></div>
+      <!-- UI of lifts and floors -->
+      <div class="floors-lifts-container">
+        <div class="floors-container"></div>
+      </div>
     </div>
     <script src="./index.js"></script>
   </body>
