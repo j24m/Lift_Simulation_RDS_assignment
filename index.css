@@ -203,18 +203,12 @@
   background-size: 100% 100%;
 }
 
-.left-door {
-  position: relative;
+.door {
+  border: 1px solid rgb(97, 92, 92);
   background-color: #aaa;
-  width: 50px;
-  left: 0;
-  right: 2px;
 }
 
+.left-door,
 .right-door {
-  position: relative;
-  background-color: #aaa;
   width: 50px;
-  right: 0;
-  left: 2px;
 }

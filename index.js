@@ -127,25 +127,29 @@ function displayLiftsAndFloors() {
       console.log(`${Math.abs(floorNumber - prevFloor) * 2}s`);
       lift.setAttribute("data-currentfloor", floorNumber);
 
-      // const leftDoor = lift.childNodes[1];
-      // const rightDoor = lift.childNodes[3];
+      const leftDoor = lift.childNodes[1];
+      const rightDoor = lift.childNodes[3];
 
-      // function openDoor() {
-      //   leftDoor.style.transform = `translateX(-50px)`;
-      //   leftDoor.style.transitionDuration = `${1}s`;
-      //   leftRight.style.transform = `translateX(50px)`;
-      //   leftRight.style.transitionDuration = `${1}s`;
-      // }
-      // function closeDoor() {
-      //   leftDoor.style.transform = `translateX(50px)`;
-      //   leftDoor.style.transitionDuration = `${1}s`;
-      //   leftRight.style.transform = `translateX(-50px)`;
-      //   leftRight.style.transitionDuration = `${1}s`;
-      // }
+      function openDoor() {
+        leftDoor.style.transform = `translateX(-50px)`;
+        leftDoor.style.transitionDuration = `${1}s`;
+        rightDoor.style.transform = `translateX(50px)`;
+        rightDoor.style.transitionDuration = `${1}s`;
+      }
 
-      // setTimeout(() => {
-      //   openDoor();
-      // }, 2000);
+      function closeDoor() {
+        leftDoor.style.transform = `translateX(0px)`;
+        leftDoor.style.transitionDuration = `${1}s`;
+        rightDoor.style.transform = `translateX(0px)`;
+        rightDoor.style.transitionDuration = `${1}s`;
+      }
+
+      setTimeout(() => {
+        openDoor();
+        setTimeout(() => {
+          closeDoor();
+        }, 2000);
+      }, Math.abs(floorNumber - prevFloor) * 2000);
     }
   }
 }
