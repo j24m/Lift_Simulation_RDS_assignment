@@ -119,26 +119,21 @@
 }
 
 .floors-lifts-container {
-  /* border: solid black; */
   margin: 6rem;
 }
 
 .floors-container {
-  outline: solid red;
   min-width: 120rem;
   border: 2px solid black;
 }
 
 .single-floor {
-  border-top: 2px solid #0e0e0e;
-  border-bottom: 2px solid #0e0e0e;
-  height: 15rem;
+  border: 2px solid #0e0e0e;
+  height: 150px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: start;
   align-items: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
 .single-floor h1 {
@@ -152,6 +147,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-width: 10rem;
 }
 
 .btn-floating {
@@ -197,39 +193,28 @@
 }
 
 .single-lift {
-  margin-left: 10rem;
-  position: relative;
-  bottom: 0;
+  margin-left: 50px;
   box-shadow: 2px 1px 3px 1px #6e6d6d;
-  width: 10rem;
-  height: 14rem;
-  border-radius: 0.5rem;
+  width: 100px;
+  height: 150px;
   display: flex;
   overflow: hidden;
   background: url(http://www.riversideelevators.com/img/elevator_inside.jpg);
   background-size: 100% 100%;
+}
 
-  .door {
-    background-color: #aaa;
-    width: 49.5%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    &.left-door {
-      left: 0;
-      background-color: #aaa;
-    }
+.left-door {
+  position: relative;
+  background-color: #aaa;
+  width: 50px;
+  left: 0;
+  right: 2px;
+}
 
-    &.right-door {
-      right: 0;
-    }
-  }
-
-  /* .active-left {
-    left: -50%;
-  } */
-
-  /* .active-right {
-    right: -50%;
-  } */
+.right-door {
+  position: relative;
+  background-color: #aaa;
+  width: 50px;
+  right: 0;
+  left: 2px;
 }
