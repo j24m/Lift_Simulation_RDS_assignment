@@ -16,6 +16,7 @@ const liftsContainer = document.querySelector(".lifts-container");
 let floorDiv;
 let floorsArray = [];
 let liftsArray = [];
+const pendingRequests = [];
 
 mainContainer.style.backgroundColor = "var(--primary-color)";
 floorsAndLiftsContainer.style.display = "none";
@@ -101,6 +102,7 @@ function displayLiftsAndFloors() {
         const liftDiv = document.createElement("div");
         liftDiv.classList.add("single-lift");
         liftDiv.setAttribute("data-currentfloor", "1");
+        liftDiv.setAttribute("data-state", "free");
         liftDiv.innerHTML = `
           <div class="door left-door"></div>
           <div class="door right-door"></div>
@@ -113,43 +115,72 @@ function displayLiftsAndFloors() {
     }
     function moveLiftToFloor(floorNumber) {
       console.log(`Moving lift to Floor ${floorNumber}`);
-      const lift = liftsArray[0];
-      const distanceToMove = -((floorNumber - 1) * 150 + (floorNumber - 1) * 5);
-      lift.style.transform = `translateY(${distanceToMove}px)`;
-      const prevFloor = lift.getAttribute("data-currentfloor");
-      console.log("prev flr", prevFloor);
-      console.log("flr nmb", floorNumber);
-      lift.style.transitionDuration = `${
-        Math.abs(floorNumber - prevFloor) * 2
-      }s`;
-      console.log(lift.style.transitionDuration);
-      console.log(Math.abs(floorNumber - prevFloor));
-      console.log(`${Math.abs(floorNumber - prevFloor) * 2}s`);
-      lift.setAttribute("data-currentfloor", floorNumber);
+      const lift = liftsArray.find(
+        (freeLift) => freeLift.getAttribute("data-state") === "free"
+      );
+      console.log(lift);
+      // lifts.forEach((singleFreeLift) => {
+      //   floorNumber - singleFreeLift.getAttribute("data-currentfloor");
 
-      const leftDoor = lift.childNodes[1];
-      const rightDoor = lift.childNodes[3];
+      // });
+      // for(i=0; i<lifts.length; i++){
+      //   let individualDifference = Math.abs(floorNumber - lifts[i].getAttribute("data-currentfloor"));
+      //   if(individualDifference )
 
-      function openDoor() {
-        leftDoor.style.transform = `translateX(-50px)`;
-        leftDoor.style.transitionDuration = `${1}s`;
-        rightDoor.style.transform = `translateX(50px)`;
-        rightDoor.style.transitionDuration = `${1}s`;
-      }
+      // }
 
-      function closeDoor() {
-        leftDoor.style.transform = `translateX(0px)`;
-        leftDoor.style.transitionDuration = `${1}s`;
-        rightDoor.style.transform = `translateX(0px)`;
-        rightDoor.style.transitionDuration = `${1}s`;
-      }
+      if (lift === undefined) {
+        pendingRequests.push(floorNumber);
+        console.log(pendingRequests);
+      } else {
+        lift.setAttribute("data-state", "busy");
+        const distanceToMove = -(
+          (floorNumber - 1) * 150 +
+          (floorNumber - 1) * 5
+        );
+        lift.style.transform = `translateY(${distanceToMove}px)`;
+        const prevFloor = lift.getAttribute("data-currentfloor");
+        console.log("prev flr", prevFloor);
+        console.log("flr nmb", floorNumber);
+        lift.style.transitionDuration = `${
+          Math.abs(floorNumber - prevFloor) * 2
+        }s`;
+        console.log(lift.style.transitionDuration);
+        console.log(Math.abs(floorNumber - prevFloor));
+        console.log(`${Math.abs(floorNumber - prevFloor) * 2}s`);
+        lift.setAttribute("data-currentfloor", floorNumber);
 
-      setTimeout(() => {
-        openDoor();
+        const leftDoor = lift.childNodes[1];
+        const rightDoor = lift.childNodes[3];
+
+        function openDoor() {
+          leftDoor.style.transform = `translateX(-50px)`;
+          leftDoor.style.transitionDuration = `${1}s`;
+          rightDoor.style.transform = `translateX(50px)`;
+          rightDoor.style.transitionDuration = `${1}s`;
+        }
+
+        function closeDoor() {
+          leftDoor.style.transform = `translateX(0px)`;
+          leftDoor.style.transitionDuration = `${1}s`;
+          rightDoor.style.transform = `translateX(0px)`;
+          rightDoor.style.transitionDuration = `${1}s`;
+        }
+
         setTimeout(() => {
-          closeDoor();
-        }, 2000);
-      }, Math.abs(floorNumber - prevFloor) * 2000);
+          openDoor();
+          setTimeout(() => {
+            closeDoor();
+            setTimeout(() => {
+              lift.setAttribute("data-state", "free");
+              if (pendingRequests.length !== 0) {
+                moveLiftToFloor(pendingRequests[0]);
+                pendingRequests.shift();
+              }
+            }, 2000);
+          }, 2000);
+        }, Math.abs(floorNumber - prevFloor) * 2000);
+      }
     }
   }
 }
